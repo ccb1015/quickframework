@@ -1,0 +1,13 @@
+运行说明：
+	1、安装maven（eclipse安装m2插件）
+	
+	2、pom中有两个jar包找不到
+		因为ojdbc和sitmesh3使用的本地jar包，需要自己安装到本地仓库。
+		安装办法：进入localjar_to_mvn目录，执行两个bat脚本（linux中进入目录执行相同命令）
+		
+自动部署方式：
+	1、配置tomcat可执行脚本的管理员用户
+	2、修改pom.xml中的tomcat信息
+	3、右键 -> run as -> Maven build -> goals中填写(tomcat7:redeploy) -> run
+		（tomcat7为pom.xml中配置的tomcat）
+		
