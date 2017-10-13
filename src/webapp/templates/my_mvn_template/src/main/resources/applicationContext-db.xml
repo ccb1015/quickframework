@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+     xmlns:aop="http://www.springframework.org/schema/aop"
+     xmlns:tx="http://www.springframework.org/schema/tx"
+     xmlns:context="http://www.springframework.org/schema/context"
+     xsi:schemaLocation="
+     http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+     http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd
+     http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+     http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd">
+     <context:annotation-config></context:annotation-config>
+     
+     <context:component-scan base-package="${basepackage}"></context:component-scan>
+     
+     <tx:annotation-driven transaction-manager="transactionManager"/>
+     <bean id="sessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+     	<property name="configLocation">
+   			<value>classpath:hibernate.cfg.xml</value>
+     	</property>
+     	<property name="mappingDirectoryLocations">  
+             <list>  
+   				<value>classpath*:${basepackage?replace('.','/')}/entity</value>
+              </list>  
+         </property>  
+     </bean>
+     
+     <bean id="hibernateTemplate" class="org.springframework.orm.hibernate3.HibernateTemplate">
+     	<property name="sessionFactory">
+     		<ref bean="sessionFactory"/>
+     	</property>
+     </bean>
+     
+     <bean id="transactionManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+     	<property name="sessionFactory">
+     		<ref bean="sessionFactory"/>
+     	</property>
+     </bean>
+     
+     <!-- 
+     <tx:advice transaction-manager="transactionManager" id="tx">
+     	<tx:attributes>
+     		<tx:method name="save*" isolation="DEFAULT" propagation="REQUIRED" read-only="false"/>
+     		<tx:method name="update*" isolation="DEFAULT" propagation="REQUIRED" read-only="false"/>
+     		<tx:method name="delete*" isolation="DEFAULT" propagation="REQUIRED" read-only="false"/>
+     		<tx:method name="*" isolation="DEFAULT" propagation="REQUIRED" read-only="true"/>
+     	</tx:attributes>
+     </tx:advice>
+      -->
+     <!-- 
+     <aop:config>
+     	<aop:pointcut expression="execution(* cn.itcast.s2sh717.service.impl.*.*(..))" id="perform"/>
+     	<aop:advisor advice-ref="tx" pointcut-ref="perform"/>
+     </aop:config>
+     
+      -->
+</beans>

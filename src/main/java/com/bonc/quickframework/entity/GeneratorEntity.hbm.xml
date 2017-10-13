@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.bonc.quickframework.entity.GeneratorEntity" table="generator_entity">
+
+        <id name="id" column="ID" type="java.lang.Long">
+            <generator class="native"/>
+        </id>
+		
+		<property name="code" type="java.lang.String">
+            <column name="CODE" length="20" not-null="true" unique="false"/>
+        </property>
+        
+		<property name="name" type="java.lang.String">
+            <column name="NAME" length="64" not-null="false" unique="false"/>
+        </property>
+        
+		<property name="projectId" type="java.lang.Long">
+            <column name="PROJECT_ID" length="19" not-null="false" unique="false"/>
+        </property>
+        
+		<!-- One-To-Many attributes -->
+		
+		<set name="generatorFields" lazy="true" inverse="true" cascade="none" >
+			<key>
+	       		<column name="ENTITY_ID"/>
+	        </key>
+			<one-to-many class="com.bonc.quickframework.entity.GeneratorField"/>
+		</set> 
+		<!-- Many-To-One attributes -->
+		
+		<many-to-one name="generatorProject" not-null="false" update="false" insert="false" cascade="none" >	
+       		<column name="PROJECT_ID"/>
+		</many-to-one> 
+
+    </class>
+</hibernate-mapping>
+

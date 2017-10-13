@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:jaxrs="http://cxf.apache.org/jaxrs"
+	xmlns:jaxws="http://cxf.apache.org/jaxws"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+    http://cxf.apache.org/jaxrs 
+    http://cxf.apache.org/schemas/jaxrs.xsd 
+    http://cxf.apache.org/jaxws 
+    http://cxf.apache.org/schemas/jaxws.xsd">
+
+	<import resource="classpath:META-INF/cxf/cxf.xml" />
+	<import resource="classpath:META-INF/cxf/cxf-servlet.xml" />
+
+	<jaxrs:server id="restfuleApi" address="/rs">
+		<jaxrs:serviceBeans>
+<#if tables ??>
+	<#list tables as tb>
+			<ref bean="${tb.className?uncap_first}Api"></ref>
+	</#list>
+</#if>
+			
+			<#if services??>
+				<#list services as se>
+					<#if se.serviceType != 1>
+			<ref bean="${se.code?uncap_first}Api"></ref>
+					</#if>
+				</#list>
+			</#if>
+		</jaxrs:serviceBeans>
+		<jaxrs:providers>
+			<bean class="org.codehaus.jackson.jaxrs.JacksonJaxbJsonProvider" />
+		</jaxrs:providers>
+	</jaxrs:server>
+
+	<#if tables ??>
+	<#list tables as tb>
+	<jaxws:endpoint id="${tb.className?uncap_first}Ws" implementor="#${tb.className?uncap_first}Api" address="/ws/${tb.className?uncap_first}"></jaxws:endpoint>
+	</#list>
+	</#if>
+	
+	<#if services??>
+		<#list services as se>
+			<#if se.serviceType == 1>
+	<jaxws:endpoint id="${se.code?uncap_first}Ws" implementor="#${se.code?uncap_first}Api" address="/ws<#if se.path??>${se.path}<#else>/${se.code?uncap_first}</#if>"></jaxws:endpoint>
+			</#if>
+		</#list	>
+	</#if>
+	
+</beans>

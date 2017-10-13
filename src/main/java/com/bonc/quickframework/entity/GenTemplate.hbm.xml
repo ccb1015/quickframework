@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.bonc.quickframework.entity.GenTemplate" table="gen_template">
+
+        <id name="id" column="Id" type="java.lang.Long">
+            <generator class="increment"/>
+        </id>
+		
+		<property name="code" type="java.lang.String">
+            <column name="code" length="64" not-null="false" unique="false"/>
+        </property>
+        
+		<property name="name" type="java.lang.String">
+            <column name="name" length="64" not-null="false" unique="false"/>
+        </property>
+        
+		<property name="uiTypeId" type="java.lang.Long">
+            <column name="ui_type_id" length="19" not-null="false" unique="false"/>
+        </property>
+        
+		<property name="tmpPath" type="java.lang.String">
+            <column name="tmp_path" length="255" not-null="false" unique="false"/>
+        </property>
+        
+		<!-- One-To-Many attributes -->
+		<!-- Many-To-One attributes -->
+
+    </class>
+</hibernate-mapping>
+

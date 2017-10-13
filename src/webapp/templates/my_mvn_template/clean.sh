@@ -1,0 +1,1 @@
+cd ${codePath};mvn clean

@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<#assign className = table.className>   
+<#assign classNameLower = className?uncap_first> 
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.1.7//EN"
+	"http://struts.apache.org/dtds/struts-2.1.7.dtd">
+<struts>
+  <package name="${classNameLower}" namespace="/" extends="struts-default">
+  	<action name="${classNameLower}!*" class="${basepackage}.web.action.${className}Action" method="{1}">
+  		<result name="list">/WEB-INF/pages/${className}/list.jsp</result>
+  		<result name="add">/WEB-INF/pages/${className}/edit.jsp</result>
+  		<result name="edit">/WEB-INF/pages/${className}/edit.jsp</result>
+  		<result name="success" type="redirectAction">${classNameLower}!list</result>
+  	</action>
+  </package>
+</struts>	

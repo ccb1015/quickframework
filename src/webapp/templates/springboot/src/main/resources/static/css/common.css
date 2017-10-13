@@ -1,0 +1,665 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 2015-5-5, 19:14:55
+    Author     : Song Zongquan <songzongquan@bonc.com.cn>
+*/
+ 
+/*  S缺省样式，对于标准的html元素进行样式控制 */
+
+a {outline:none; star:expression_r(this.onFocus=this.blur());}
+table,th,td {border-collapse: collapse;border:0px solid #D3D3D3;}
+    
+
+    
+    thead {
+        
+    }
+    
+   
+    
+    
+    
+    p {
+        
+    }
+    
+    
+    
+    form {
+        
+    }
+    
+    input {
+        
+        background-color:#FFFF ;
+        border:#D3D3D3 thin solid;
+        border-radius:3px;
+        
+    }
+    /* S按钮的基本样式*/
+    .button {
+            width:71px;
+            height:31px;
+            background-image:  url('../img/button.png');
+           border: 0px;
+           cursor: pointer;
+           margin-left:3px;
+           margin-right:3px;
+           margin-top:2px;
+           margin-bottom: 2px;
+    }
+     /* E按钮的基本样式*/
+     
+     
+   /*S单行文本域的基本样式*/
+    .textfield {
+         border: #e5e5e5 1px solid;
+         width:304px;
+         height:26px;
+         line-height:26px;
+         color:#4c4c4c;
+         padding-left: 5px;
+    }
+    /*E单行文本域的基本样式*/
+    
+    /*S复选框的基本样式*/
+    .checkbox {
+        
+    }
+   
+    .radio {
+        
+    }
+  
+    /*  S下拉选择框的基本样式*/    
+    select  {
+          border: #e5e5e5 1px solid;
+         width:311px;
+          height:28px;
+         line-height: 26px;
+          color:#4c4c4c;
+          border-radius:3px;
+           padding:4px 0;vertical-align:middle; 
+    }
+    
+    /* 修改select的按钮图标
+        用时请将select 标签 再用 <div class="select_wrap"> 来包装一下。
+    */
+    .select_wrap {width:305px;height:31px;background:#fff url(../img/icons.png) no-repeat right -24px;
+color: #a1a1a1;  border-radius:3px;
+border:1px solid #E4E4E4;cursor:pointer;position:relative;_filter:alpha(opacity=0);
+  }
+            .select_wrap label{padding-left:10px;z-index:2; color: #a1a1a1; line-height: 40px; height: 40px; display: block;}
+      .select_wrap  select{  height:31px; line-height:31px; z-index:4;position:absolute;top:0;left:0;margin:0;padding:0;opacity:0; *margin-top:12px; filter:alpha(opacity=0);cursor:pointer;  }
+  /*  E下拉选择框的基本样式*/    
+
+
+    a {
+        
+    }
+    /*S 以下为按钮的三种不同背景*/
+    .button-yello{
+         background-color:#ff9600 ;
+          border: #ff9600  1px solid;
+          color: #FFF; 
+    }
+    .button-blue{
+         background-color:#46c0ff ;
+         border: #46c0ff  1px solid;
+         color: #FFF; 
+    }
+    .button-gray{
+         background-color:#bcbcbc ;
+           border: #bcbcbc  1px solid;
+           color: #FFF; 
+    }
+    
+    .button-small {
+        
+        height:24px;
+          border-radius:3px;
+             background-color:#bcbcbc ;
+         border: #bcbcbc  1px solid;
+         color :#FFF;
+    }
+    
+  /*  E缺省样式，对于标准的html元素进行样式控制 */
+   
+  /**
+     以下样式是相对缺省设置来说比较特殊的样式设置
+  
+  */
+      /* S表单的表格样式*/
+    .form-table {
+        
+        border:1px;
+        
+    }
+    /*E表单中的表格样式*/
+    /* S模块页----页标题区 */
+    
+            /* 功能页面最上面的模块名显示*/
+   
+          .page-title{
+				display:block;
+          }  
+          .page-title li{
+          		font-family:微软雅黑;
+          		font-size:18px;
+          		font-weight:bold;
+          		font-style:normal;
+          		text-decoration:none;
+          		color:#FF0000;
+          }
+          /*页面上方标题前图标*/
+          .page-title-icon{
+          	  width:25px;
+          	  height:25px;
+			  background-image: url("../img/pageTitle.png");
+          }
+          /*页面标题区的下划线*/
+          .page-title-underline{
+				display:block;
+				height:3px;
+				background-color:#df0000;
+				margin-top:3px;
+				margin-bottom:10px;
+          }
+  /* E模块页----页标题区 */
+  
+  
+    /*模块页----输入表单--标题分块*/
+    
+            /*表单分区的标题栏*/
+          .form-subarea-titlebar  {
+                   border: 0px;
+                   height: 33px;
+                   width: 100%;
+                   background-color: #f3f3f3;
+                  
+                   
+          } 
+          /*表单分区上方条块*/
+          .form-subarea-titlebar-text  {
+               font-weight:  bold;
+               float: left;
+               padding: 0px;
+               margin-left: 20px;
+              /* margin-top: 9px;*/ /*line-height代替*/
+               color: #1b1b1b;
+               line-height:33px;
+          }
+         
+    
+    /*模块页----输入表单--表单区*/
+            /*表单域前面的文本*/
+           .label  {
+                   text-align: right;
+           }
+           /*选项卡*/
+           .tabpan {
+
+           }   
+           /*图片上传按钮*/
+           .upload-button {
+        
+    }
+
+
+ /*模块页---查询页面--列表查询条件区*/
+             .query-bar{
+                        background-color: #f3f3f3;
+                        width:100%;
+                        height:35px;
+                        padding:5px 0px;
+             }
+                    .query-bar-button{ 
+                                     float:right;
+                    }
+    
+     /*模块页---查询页面--列表查询结果区*/
+     
+            /*查询结果数据表格*/
+          .grid  {
+                      border: 0px;
+                      width:100%;
+          }  
+           
+table,th,td {border-collapse: collapse;border:0px solid #D3D3D3;}
+.grid { border: 0px;width:100%;} 
+.grid>tbody>tr>th { border:1px #d7d7d7 solid; background-color: #f0f0f0; text-align: center; height:36px; }
+.grid>tbody>tr>th,.grid>tbody>tr>td { border:1px #d7d7d7 solid;margin:0px;padding:0 5px;height: 30px;text-wrap:  none;}
+.grid>tbody>tr:nth-child(2n+1){ background-color: #f7f7f7;}
+.grid>tbody>tr.no-hover:hover{ background-color:#fff;}
+.grid>tbody>tr:hover { background-color: rgba(215,215,215,0.7);} 
+.pagelink {padding: 5px;}
+        
+
+        /*分页组件样式*/
+          .pagelink {padding: 5px;font-size:12px;}  
+		  .pagelink a, .pagelink a:link, .pagelink a:visited {padding:2px 5px;margin:2px;border:1px solid #aabbcc;text-decoration:none;color:#006699;}  
+		  .pagelink a:hover, .pagelink a:active {border: 1px solid #ff0000;color: #000;text-decoration: none;}  
+		  .pagelink span.current {padding: 2px 5px;margin: 2px;border: 1px solid #ff0000;font-weight: bold;background-color: #ff0000;color: #FFF;}  
+		  .pagelink span.disabled {padding: 2px 5px;margin: 2px;border: 1px solid #eee; color: #ddd;}  
+		  .pagelink span.info {padding: 2px 5px;margin: 2px; color: #fa0000;}  
+		  .pagelink button.current {padding: 2px 5px;margin: 2px;border: 1px solid #ff0000;font-weight: bold;background-color: #ff0000;color: #FFF;}  
+	 /*文件上传-开始*/
+	 	form{padding:0;margin:0px}
+		 .uploadTable{
+		 	border:0px solid #ccc; color:#666;
+		 }
+		 .uploadTable tbody td{
+		 	border:0px solid #ccc; color:#666;
+		 }
+		.uploadTable-tableData {
+			border:0px solid #ccc; color:#666;
+			border-collapse: collapse;
+		}
+		.uploadTable-tableData td, .tableData th  {
+			border:0px solid #ccc;
+			padding:0 5px;
+			height:24px;			
+		}
+		.uploadTable-tableData tr{
+			border-bottom:1px dashed  #ccc; 
+			border-left:0; 
+			border-top:0; 
+		}
+		.uploadTable-filename-div{
+			width:100%;
+			white-space:nowrap;
+			overflow:hidden;
+			text-overflow:ellipsis
+		}
+		.uploadTable-tableData .title {
+			border-bottom:2px solid #c00; 
+			border-left:0; 
+			border-top:0; 
+			font-weight:bold; 
+			background:#efefef; 
+			text-align: center;
+			height:25px;
+		}
+	 
+		.uploadTable-inputfile { 
+			position:absolute;
+			left:0;
+			top:0; 
+		    border-style:solid;
+		    border-width:1px;
+		 
+		    border-color:#aaa;
+		    font-size:14px; 	 
+			width: 200px; 
+			height: 28px; 
+			font-size:12px;
+			padding-top:2px;
+			margin-top:2px;
+		 	filter:alpha(opacity=0);
+		 	opacity:0;
+		} 
+		.uploadTable-inputfile2 { 
+		 
+		    border-style:solid;
+		    border-width:1px;
+		 
+		    border-color:#aaa;
+		    font-size:12px; 	 
+			width: 130px; 
+			height: 20px; 
+		 
+		}
+		.uploadTable-button{
+			color:#666;
+		                     font-size: 12px;
+		                     width:60px;
+		                     height:25px;
+		                     border:0px;
+		                     cursor:pointer; 
+		                      margin:2px;
+		}
+		/*文件上传-结束*/
+  /*查询框样式-开始*/
+		  .page-query-box{
+		  	float:right;
+		}
+		.page-query-box-container{
+			 background-image: url("../img/such.png")   ;
+			 width:239px;
+			 height:26px;
+		}
+		.page-query-box-container table tr td{
+			border:solid 0px #ccc;
+		}
+		.page-query-box-search{
+			position:relative;
+			left:8px;
+			top:8px;
+			width:13px;
+			height:13px;
+			 background-image: url("../img/ws2.png");
+		 	float:left;
+		}
+		.page-query-box-text{
+			position:relative;
+			border:0px solid #00f;
+		 	top:4px;
+			left:10px;
+		 
+			height:18px;
+			width:180px;
+			float:left;
+		}
+		.page-query-box-arrow1{
+			position:relative;
+			border:0px solid #00f;
+		 	top:8px;
+			left:18px;
+			 
+			 background-image: url("../img/ws1.png");
+			height:11px;
+			width:11px;
+			float:left;
+			cursor:pointer;
+		}
+		.page-query-box-arrow2{
+				position:relative;
+			border:0px solid #00f;
+		 	top:8px;
+			left:18px;
+			 
+			 background-image: url("../img/ws.png");
+			height:11px;
+			width:11px;
+			float:left;
+			cursor:pointer;
+		}
+		
+		.page-query-box-list{
+		 
+			border:0px solid #00f;
+		 
+		 	 background-image: url("../img/ws3.png");
+			height:14px;
+			width:19px;
+			cursor:pointer;
+		 
+		}
+		.page-query-box-list-active{
+		 
+			border:0px solid #00f;
+		 
+		 	 background-image: url("../img/red-list.png");
+			height:14px;
+			width:19px;
+			cursor:pointer;
+		 
+		}
+		.page-query-box-jiugong{
+		 
+			border:0px solid #00f;
+		 
+			 background-image: url("../img/ws4.png");
+			height:14px;
+			width:14px;
+			cursor:pointer;
+		 
+		}
+		.page-query-box-jiugong-active{
+		 
+			border:0px solid #00f;
+		 
+			 background-image: url("../img/red-jiugong.png");
+			height:14px;
+			width:14px;
+			cursor:pointer;
+		 
+		}
+    /*查询框样式-结束*/
+  /*上传图片组件 开始*/
+  .imgbox{
+	width:500px;
+	height:490px;
+	padding:1px;
+	border:0 none;
+}
+.imgbox tr td{
+	border:solid 0px #ccc;
+	
+}
+.imgbox-left-arrow{
+	height:250px;
+	width:20px;
+}
+.imgbox-left-arrow-hv{
+	height:250px;
+	width:20px;
+	background-color:#ddd;
+}
+.imgbox-left-arrow div{
+	height:11px;
+	width:11px;
+	margin-left:4px;
+	cursor:pointer;
+	background:url("../img/wl.png") ;
+}
+.imgbox-right-arrow{
+	height:250px;
+	width:20px;
+}
+.imgbox-right-arrow-hv{
+	height:250px;
+	width:20px;
+	background-color:#ddd;
+}
+.imgbox-content{
+	height:250px;
+	width:460px;
+}
+.imgbox-right-arrow div{
+	height:11px;
+	width:11px;
+	margin-left:4px;
+	cursor:pointer;
+	background:url("../img/wr.png");
+}
+ .imgbox-title{
+ 	font-family:微软雅黑;
+	font-size:18px;
+	font-weight:bold;
+	font-style:normal;
+	text-decoration:none;
+	color:#fff;
+	width:595x;
+	height:30px;
+	background-color:#aaa;
+	padding:3px;
+	border:0 none;
+ }
+ .imgbox-upload{
+ 	height:120px;
+ 	padding:3px;
+ }
+ .imgbox-inputfile { 
+			position:absolute;
+			left:0;
+			top:0; 
+		    border-style:solid;
+		    border-width:1px;
+		 
+		    border-color:#aaa;
+		    font-size:14px; 	 
+			width: 60px; 
+			height: 28px; 
+			font-size:12px;
+			padding-top:2px;
+			margin-top:2px;
+		 	filter:alpha(opacity=0);
+		 	opacity:0;
+		} 
+		.imgbox-inputfile2 { 
+		 
+		    border-style:solid;
+		    border-width:1px;
+		 	display:none;
+		    border-color:#aaa;
+		    font-size:12px; 	 
+			width: 0px; 
+			height: 20px; 
+		 
+		}
+		.imgbox-button{
+			color:#666;
+		                     font-size: 12px;
+		                     width:60px;
+		                     height:25px;
+		                     border:0px;
+		                     cursor:pointer; 
+		                      margin:2px;
+		}
+	.imgbox-vimg{
+		border:dashed 2px #aaa;
+	}
+	.imgbox-content-tbl{
+		background-color:#fafafa;
+		
+	}
+	.imgbox-content-tbl td{
+		 text-align:center;
+	}
+	/*上传图片结束*/
+	
+	input[type='checkbox']{
+		 border-style: none;
+	}
+	input[type='text']{
+		vertical-align: middle;
+		/*line-height:26px;*//*.textfield中设置*/
+	}
+  input,button,.btn{outline: none;}
+/*****************************提示框样式  start ***************************************/
+/*弹窗样式*/
+.win{display: none;}
+.win-warp{
+	width:890px;
+	height:520px;
+	position:relative;
+	background-color:#fcfcfc;
+	text-align:center;
+	border:1px solid #dddddd;
+	margin-left: auto;
+	margin-right: auto;
+}
+.win-max .win-warp{
+	width:100%;
+	height:100%;
+}
+.win-container{
+
+}
+.win-title{
+	line-height: 40px; 
+	font-family:"微软雅黑";
+	font-size:16px;
+	/* font-weight: bold; */
+	text-align: left; 
+	padding-left:15px;
+	border-bottom:1px solid #dddddd;
+	background-color:#f3f3f3;
+}
+.win-warp .win-title{
+	cursor:move;
+}
+.win .closeBtn{
+	background-image: url('../img/pop_close.png');
+	background-size: contain;
+	float: right;
+	display: inline-block;
+	width: 18px;
+	height: 18px;
+	cursor:pointer;
+	margin: 10px 15px 0 10px;
+}
+.win .maxBtn{
+	background-image: url('../img/pop_max.png');
+	background-size: contain;
+	float: right;
+	display: inline-block;
+	width: 18px;
+	height: 18px;
+	cursor:pointer;
+	margin: 10px 10px 0 10px;
+}
+.win .buttons{
+	font-family: '微软雅黑 Regular', '微软雅黑';
+	text-align:center;
+	padding-top:10px;
+}
+.win iframe{
+	width:860px;
+	height:420px;;
+	border: 0px; 
+}
+.win-max iframe{
+	width:100%;
+}
+/*提示框的样式*/
+.win-warp2{
+	width:385px;
+	min-height:185px;
+	position:relative;
+	text-align:center;
+	background:#fff;
+	border:1px solid #dddddd;
+	margin-left: auto;
+	margin-right: auto;	
+	padding-bottom: 0px;
+}
+.win .content2{
+	background:#fff;
+	text-align:center;
+	padding:20px;
+}
+.win .content2 .msg{
+	min-height:40px;
+}
+.win .content2 .msg p{
+	font-size:14px;
+	font-family: '微软雅黑 Regular', '微软雅黑';
+	font-weight: 400;
+	line-height:25px;
+	word-wrap: break-word;
+}
+.win .buttons .btn-ok{
+	background-color:#DF0000;
+	width:130px;
+	height:36px;
+	color:#fff;
+	border:1px solid #dbdbdb;
+	cursor:pointer;
+	display: inline-block;
+	margin-right: 10px; 
+}
+.win .buttons .btn-dis{
+	background-color:#d7d7d7;
+	width:130px;
+	height:36px;
+	color:#fff;
+	border:1px solid #dbdbdb;
+	cursor:default;
+	display: inline-block;
+	margin-right: 10px; 
+}
+.win .buttons .btn-cancel{
+	background:#fff;
+	width:130px;
+	height:36px;
+	border:1px solid #dbdbdb;
+	cursor:pointer;
+	display: inline-block;
+}
+/*****************************提示框样式 end ***************************************/

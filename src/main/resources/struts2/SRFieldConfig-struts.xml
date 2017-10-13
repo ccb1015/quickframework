@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.1.7//EN"
+	"http://struts.apache.org/dtds/struts-2.1.7.dtd">
+<struts>
+  <package name="SRFieldConfig" namespace="/" extends="struts-default">
+  	<action name="SRFieldConfig!*" class="com.bonc.quickframework.web.action.SRFieldConfigAction" method="{1}">
+  		<result name="list">/WEB-INF/pages/SRFieldConfig/list.jsp</result>
+  		<result name="add">/WEB-INF/pages/SRFieldConfig/edit.jsp</result>
+  		<result name="edit">/WEB-INF/pages/SRFieldConfig/edit.jsp</result>
+  		<result name="success" type="redirectAction">SRFieldConfig!list</result>
+  	</action>
+  </package>
+</struts>	

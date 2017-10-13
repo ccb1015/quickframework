@@ -1,0 +1,64 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.bonc.quickframework.entity.GeneratorServiceMethod" table="generator_service_method">
+
+        <id name="id" column="id" type="java.lang.Long">
+            <generator class="native"/>
+        </id>
+		
+		<property name="businessLogic" type="java.lang.String">
+            <column name="business_logic" length="1000" not-null="false" unique="false"/>
+        </property>
+        
+		<property name="code" type="java.lang.String">
+            <column name="code" length="255" not-null="false" unique="false"/>
+        </property>
+        
+		<property name="name" type="java.lang.String">
+            <column name="name" length="255" not-null="false" unique="false"/>
+        </property>
+        
+		<property name="consumes" type="java.lang.String">
+            <column name="consumes" length="255" not-null="false" unique="false"/>
+        </property>
+        
+		<property name="httpMethod" type="java.lang.String">
+            <column name="http_method" length="255" not-null="false" unique="false"/>
+        </property>
+        
+		<property name="producer" type="java.lang.String">
+            <column name="producer" length="255" not-null="false" unique="false"/>
+        </property>
+        
+		<property name="subPath" type="java.lang.String">
+            <column name="sub_path" length="255" not-null="false" unique="false"/>
+        </property>
+        
+		<property name="returnType" type="java.lang.String">
+            <column name="return_type" length="255" not-null="false" unique="false"/>
+        </property>
+        
+		<property name="serviceId" type="java.lang.Long">
+            <column name="service_id" length="19" not-null="false" unique="false"/>
+        </property>
+        
+		<!-- One-To-Many attributes -->
+		
+		<set name="generatorMethodParams" lazy="true" inverse="true" cascade="none" >
+			<key>
+	       		<column name="method_id"/>
+	        </key>
+			<one-to-many class="com.bonc.quickframework.entity.GeneratorMethodParam"/>
+		</set> 
+		<!-- Many-To-One attributes -->
+		
+		<many-to-one name="generatorService" not-null="false" update="false" insert="false" cascade="none" >	
+       		<column name="service_id"/>
+		</many-to-one> 
+
+    </class>
+</hibernate-mapping>
+

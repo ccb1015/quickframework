@@ -1,0 +1,67 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.bonc.quickframework.entity.GeneratorProject" table="generator_project">
+
+        <id name="id" column="ID" type="java.lang.Long">
+            <generator class="native"/>
+        </id>
+		
+		<property name="path" type="java.lang.String">
+            <column name="PATH" length="256" not-null="true" unique="false"/>
+        </property>
+        
+		<property name="code" type="java.lang.String">
+            <column name="CODE" length="64" not-null="true" unique="false"/>
+        </property>
+        
+		<property name="name" type="java.lang.String">
+            <column name="NAME" length="64" not-null="false" unique="false"/>
+        </property>
+        
+		<property name="basepackage" type="java.lang.String">
+            <column name="BASEPACKAGE" length="64" not-null="true" unique="false"/>
+        </property>
+        
+		<property name="temaplateName" type="java.lang.String">
+            <column name="temaplate_name" length="32" not-null="false" unique="false"/>
+        </property>
+        
+		<property name="dbserverId" type="java.lang.Long">
+            <column name="DBserver_ID" length="19" not-null="true" unique="false"/>
+        </property>
+        
+		<property name="webserverId" type="java.lang.Long">
+            <column name="webserver_id" length="19" not-null="true" unique="false"/>
+        </property>
+        
+		<!-- One-To-Many attributes -->
+		
+		<set name="generatorServices" lazy="false" inverse="true" cascade="none" >
+			<key>
+	       		<column name="project_id"/>
+	        </key>
+			<one-to-many class="com.bonc.quickframework.entity.GeneratorService"/>
+		</set> 
+		
+		<set name="generatorEntitys" lazy="false" inverse="true" cascade="none" >
+			<key>
+	       		<column name="PROJECT_ID"/>
+	        </key>
+			<one-to-many class="com.bonc.quickframework.entity.GeneratorEntity"/>
+		</set> 
+		<!-- Many-To-One attributes -->
+		
+		<many-to-one name="generatorDbserver" not-null="false" update="false" insert="false" cascade="none" >	
+       		<column name="DBserver_ID"/>
+		</many-to-one> 
+		
+		<many-to-one name="generatorWebserver" not-null="false" update="false" insert="false" cascade="none" >	
+       		<column name="webserver_id"/>
+		</many-to-one> 
+
+    </class>
+</hibernate-mapping>
+

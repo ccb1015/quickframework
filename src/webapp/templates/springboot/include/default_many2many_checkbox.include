@@ -1,0 +1,26 @@
+<#--many2many的多选模版-->
+<!-- default_many2many_checkbox.include生成 -->
+<#if foreignKey.parentName??>
+	<#assign fkFieldName = foreignKey.parentName>
+<#else>
+	<#assign fkFieldName = fkPojoClass +"s">
+</#if>
+<div class="form-group">
+	<label class="col-sm-2 control-label"><#if foreignKey.description?? && foreignKey.description != ''>${foreignKey.description}<#else>${fkPojoClass}</#if>:</label>
+	<div class="col-sm-5">
+<c:if test="<@el '${fkPojoClassVar}s !=null && ${fkPojoClassVar}s.size()>0' />">
+    <c:forEach items="<@el '${fkPojoClassVar}s'/>" var="item" varStatus="s">
+        <label>
+			<input type="checkbox" value="<@jspEl 'item.${valueColumn}'/>" name="${classNameLower}.${fkFieldName?uncap_first}.id"
+					<@el '(bean.${classNameLower}.${fkFieldName?uncap_first}!=null && bean.${classNameLower}.${fkFieldName?uncap_first}.${valueColumn}==item.${valueColumn})?"checked=\'checked\'":""'/>
+				 	class="field_${fkFieldName?uncap_first}"/>
+				<@el 'item.${foreignKey.showColumnName }' />
+			<@el 'item.${foreignKey.showColumnName }' />
+		</label>
+    </c:forEach>
+</c:if>
+		<span class="help-block m-b-none">
+		</span>
+	</div>
+</div>
+

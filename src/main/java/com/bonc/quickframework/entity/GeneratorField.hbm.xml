@@ -1,0 +1,131 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.bonc.quickframework.entity.GeneratorField" table="generator_field">
+
+        <id name="id" column="ID" type="java.lang.Long">
+            <generator class="native"/>
+        </id>
+		
+		<property name="code" type="java.lang.String">
+            <column name="CODE" length="64" not-null="true" unique="false"/>
+        </property>
+        
+		<property name="name" type="java.lang.String">
+            <column name="NAME" length="64" not-null="false" unique="false"/>
+        </property>
+        
+		<property name="dataTypeId" type="java.lang.Long">
+            <column name="DATA_TYPE_ID" length="20" not-null="false" unique="false"/>
+        </property>
+        
+		<property name="length" type="java.lang.Long">
+            <column name="LENGTH" length="19" not-null="false" unique="false"/>
+        </property>
+        
+		<property name="pk" type="java.lang.Long">
+            <column name="PK" length="19" not-null="false" unique="false"/>
+        </property>
+        
+		<property name="isIncrement" type="java.lang.Long">
+            <column name="IS_INCREMENT" length="19" not-null="false" unique="false"/>
+        </property>
+        
+		<property name="notNull" type="java.lang.Long">
+            <column name="NOT_NULL" length="19" not-null="false" unique="false"/>
+        </property>
+        
+		<property name="defaultValue" type="java.lang.String">
+            <column name="DEFAULT_VALUE" length="64" not-null="false" unique="false"/>
+        </property>
+        
+		<property name="entityId" type="java.lang.Long">
+            <column name="ENTITY_ID" length="19" not-null="true" unique="false"/>
+        </property>
+        
+		<property name="fkTypeColumn" type="java.lang.String">
+            <column name="FK_TYPE_COLUMN" length="20" not-null="false" unique="false"/>
+        </property>
+        
+		<property name="isUnique" type="java.lang.Long">
+            <column name="IS_UNIQUE" length="19" not-null="false" unique="false"/>
+        </property>
+        
+		<property name="mainFk" type="java.lang.Long">
+            <column name="MAIN_FK" length="19" not-null="false" unique="false"/>
+        </property>
+		<property name="showColumnId" type="java.lang.Long">
+            <column name="SHOW_COLUMN_Id" length="20" not-null="false" unique="false"/>
+        </property>
+		<property name="isSearch" type="java.lang.Long">
+            <column name="IS_SEARCH" length="20" not-null="false" unique="false"/>
+        </property>
+        <property name="entityTypeId" type="java.lang.Long">
+            <column name="ENTITY_TYPE_ID" length="19" not-null="false" unique="false"/>
+        </property>
+        <property name="FilterFieldId" type="java.lang.Long">
+            <column name="FILTER_FIELD_ID" length="19" not-null="false" unique="false"/>
+        </property>
+        <property name="filterTypeId" type="java.lang.Long">
+            <column name="FILTER_TYPE_ID" length="19" not-null="false" unique="false"/>
+        </property>
+        <property name="sequence" type="java.lang.Long">
+            <column name="SEQUENCE" length="19" not-null="false" unique="false"/>
+        </property>
+        <property name="uiId" type="java.lang.Long">
+            <column name="UI_ID" length="19" not-null="false" unique="false"/>
+        </property>
+        <property name="validPattern" type="java.lang.String">
+            <column name="VALID_PATTERN" length="255" not-null="false" unique="false"/>
+        </property>
+        <property name="validMsg" type="java.lang.String">
+            <column name="VALID_MSG" length="255" not-null="false" unique="false"/>
+        </property>
+        
+        <property name="isShow" type="java.lang.Long">
+            <column name="IS_SHOW" length="19" not-null="false" unique="false"/>
+        </property>
+        
+        <property name="isSort" type="java.lang.Long">
+            <column name="IS_SORT" length="19" not-null="false" unique="false"/>
+        </property>
+        <property name="isSearchCondition" type="java.lang.Long">
+            <column name="IS_SEARCH_CONDITION" length="19" not-null="false" unique="false"/>
+        </property>
+        <property name="showField" type="java.lang.String">
+            <column name="SHOW_FIELD" length="255" not-null="false" unique="false"/>
+        </property>
+        <property name="searchField" type="java.lang.String">
+            <column name="SEARCH_FIELD" length="255" not-null="false" unique="false"/>
+        </property>
+        
+		<!-- One-To-Many attributes -->
+		<!-- Many-To-One attributes -->
+		
+		<many-to-one name="ui" not-null="false" update="false" insert="false" cascade="none" >	
+       		<column name="UI_ID"/>
+		</many-to-one> 
+		<many-to-one name="showColumn" not-null="false" update="false" insert="false" cascade="none" >	
+       		<column name="SHOW_COLUMN_ID"/>
+		</many-to-one> 
+		<many-to-one name="filterType" not-null="false" update="false" insert="false" cascade="none" >	
+       		<column name="FILTER_TYPE_ID"/>
+		</many-to-one> 
+		<many-to-one name="filterField" not-null="false" update="false" insert="false" cascade="none" >	
+       		<column name="FILTER_FIELD_ID"/>
+		</many-to-one> 
+		<many-to-one name="generatorEntity" not-null="false" update="false" insert="false" cascade="none" >	
+       		<column name="ENTITY_ID"/>
+		</many-to-one> 
+		 <many-to-one name="dataType" not-null="false" update="false" insert="false" cascade="none" >	
+       		<column name="DATA_TYPE_ID"/>
+		</many-to-one> 
+		<many-to-one name="entityType" not-null="false" update="false" insert="false" cascade="none" >	
+       		<column name="ENTITY_TYPE_ID"/>
+		</many-to-one> 
+
+    </class>
+</hibernate-mapping>
+

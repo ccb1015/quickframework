@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.bonc.quickframework.entity.GeneratorDataType" table="generator_data_type">
+
+        <id name="id" column="id" type="java.lang.Long">
+            <generator class="increment"/>
+        </id>
+		
+		<property name="code" type="java.lang.String">
+            <column name="code" length="20" not-null="true" unique="false"/>
+        </property>
+        
+		<property name="name" type="java.lang.String">
+            <column name="name" length="20" not-null="false" unique="false"/>
+        </property>
+        
+		<property name="fullType" type="java.lang.String">
+            <column name="full_type" length="64" not-null="true" unique="false"/>
+        </property>
+        
+		<!-- One-To-Many attributes -->
+		<!-- Many-To-One attributes -->
+
+    </class>
+</hibernate-mapping>
+

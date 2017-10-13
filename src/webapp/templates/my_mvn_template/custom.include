@@ -1,0 +1,5 @@
+<#-- 本文件包含一些公共的变量 -->
+
+<#--
+<#assign jspFileBasePath = "/"+namespace+"/"+table.className>
+-->

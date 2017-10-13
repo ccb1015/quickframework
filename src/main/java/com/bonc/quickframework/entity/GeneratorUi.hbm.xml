@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.bonc.quickframework.entity.GeneratorUi" table="generator_ui">
+
+        <id name="id" column="Id" type="java.lang.Long">
+            <generator class="increment"/>
+        </id>
+		
+		<property name="code" type="java.lang.String">
+            <column name="code" length="20" not-null="false" unique="false"/>
+        </property>
+        
+		<property name="name" type="java.lang.String">
+            <column name="name" length="64" not-null="false" unique="false"/>
+        </property>
+        
+		<property name="type" type="java.lang.String">
+            <column name="type" length="19" not-null="false" unique="false"/>
+        </property>
+		<property name="implementType" type="java.lang.Long">
+            <column name="IMPLEMENT_TYPE" length="19" not-null="false" unique="false"/>
+        </property>
+        
+		<property name="script" type="java.lang.String">
+            <column name="script" length="1000" not-null="false" unique="false"/>
+        </property>
+        
+		<property name="sequence" type="java.lang.Long">
+            <column name="sequence" length="20" not-null="false" unique="false"/>
+        </property>
+        
+		<!-- One-To-Many attributes -->
+		<!-- Many-To-One attributes -->
+
+    </class>
+</hibernate-mapping>
+

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:jaxrs="http://cxf.apache.org/jaxrs"
+	xmlns:jaxws="http://cxf.apache.org/jaxws"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+    http://cxf.apache.org/jaxrs 
+    http://cxf.apache.org/schemas/jaxrs.xsd 
+    http://cxf.apache.org/jaxws 
+    http://cxf.apache.org/schemas/jaxws.xsd">
+
+	<import resource="classpath:META-INF/cxf/cxf.xml" />
+	<import resource="classpath:META-INF/cxf/cxf-servlet.xml" />
+
+	<jaxrs:server id="demoRs" address="/rs">
+		<jaxrs:serviceBeans>
+			<ref bean="demoApi"></ref>
+			<ref bean="helloworldApi"></ref>
+		</jaxrs:serviceBeans>
+		<jaxrs:providers>
+			<bean class="org.codehaus.jackson.jaxrs.JacksonJaxbJsonProvider" />
+		</jaxrs:providers>
+	</jaxrs:server>
+
+	<jaxws:endpoint id="demoWs" implementor="#demoApi" address="/ws/demo"></jaxws:endpoint>
+	<jaxws:endpoint id="helloworldWs" implementor="#helloworldApi" address="/ws/helloworld"></jaxws:endpoint>
+	
+</beans>

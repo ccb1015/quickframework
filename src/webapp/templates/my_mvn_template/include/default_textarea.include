@@ -1,0 +1,10 @@
+<#--default_textarea模版-->
+<!-- default_textarea.include生成 -->
+<div class="form-group">
+	<label class="col-sm-2 control-label">${column.description}:</label>
+	<div class="col-sm-10">
+		<textarea style="height:150px;" class="form-control" name="bean.${classNameLower}.${column.columnNameLower}"><s:property value="bean.${classNameLower}.${column.columnNameLower}"/></textarea>
+		<span class="help-block m-b-none">
+		</span>
+	</div>
+</div>

@@ -1,0 +1,25 @@
+<#--many2One的单选模版-->
+<!-- default_many2one_radio.include生成 -->
+<#if foreignKey.parentName??>
+	<#assign fkFieldName = foreignKey.parentName>
+<#else>
+	<#assign fkFieldName = fkPojoClass>
+</#if>
+<div class="form-group">
+	<label class="col-sm-2 control-label"><#if foreignKey.description?? && foreignKey.description != ''>${foreignKey.description}<#else>${fkPojoClass}</#if>:</label>
+		<div class="col-sm-10">
+		<s:if test="#${fkPojoClassVar}s !=null && #${fkPojoClassVar}s.size()>0">
+			<s:iterator value="${fkPojoClassVar}s" var="item" status="s">
+		<label>
+			<input type="radio" value="<@jspEl 'item.${valueColumn}'/>" name="bean.${classNameLower}.${fkFieldName?uncap_first}.id"
+				<@jspEl '(bean.${classNameLower}.${fkFieldName?uncap_first}!=null && bean.${classNameLower}.${fkFieldName?uncap_first}.${valueColumn}==item.${valueColumn})?"checked=\'checked\'":""'/>
+			 	class="field_${fkFieldName?uncap_first}"/>
+			<@jspEl 'item.${foreignKey.showColumnName }' />
+		</label>
+			</s:iterator>
+		</s:if>
+		<span class="help-block m-b-none">
+		</span>
+	</div>
+</div>
+

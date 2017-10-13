@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.bonc.quickframework.entity.GenPropType" table="gen_prop_type">
+
+        <id name="id" column="Id" type="java.lang.Long">
+            <generator class="increment"/>
+        </id>
+		
+		<property name="typeKey" type="java.lang.String">
+            <column name="type_key" length="20" not-null="false" unique="false"/>
+        </property>
+        
+		<property name="typeName" type="java.lang.String">
+            <column name="type_name" length="20" not-null="false" unique="false"/>
+        </property>
+        
+		<!-- One-To-Many attributes -->
+		
+		<set name="genUiPropertitys" lazy="false" inverse="true" cascade="none" >
+			<key>
+	       		<column name="type_id"/>
+	        </key>
+			<one-to-many class="com.bonc.quickframework.entity.GenUiPropertity"/>
+		</set> 
+		<!-- Many-To-One attributes -->
+
+    </class>
+</hibernate-mapping>
+

@@ -1,0 +1,110 @@
+<#assign className = table.className>   
+<#assign classNameLower = className?uncap_first> 
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="${basepackage}.entity.${className}" table="${table.sqlName}">
+
+<@generateHibernateId/>
+<@generateHibernateRegularColumns/>
+		<!-- One-To-Many attributes -->
+<@generateHibernateOneToMany/>
+		<!-- Many-To-One attributes -->
+<@generateHibernateManyToOne/>
+		<!-- Many-To-Many attributes -->
+<@generateHibernateManyToMany/>
+
+    </class>
+</hibernate-mapping>
+
+<#macro generateHibernateId>
+        <#if table.singleId>
+        <#list table.columns as column>
+        <#if column.pk>
+        <id name="${column.columnNameLower}" column="${column.sqlName}" type="${column.javaType}">
+            <generator class="<#if dbserver.dbType=='mysql'>increment<#else>native</#if>"/>
+        </id>
+        </#if>
+		</#list>
+		</#if>
+		
+		<#if !table.singleId>
+        <composite-id>
+        <#list table.columns as column>
+        <#if column.pk>
+        	<key-property name="${column.columnNameLower}" type="${column.javaType}" column="${column.sqlName}"/>
+        </#if>
+		</#list>		
+        </composite-id>
+		</#if>
+</#macro>
+
+<#macro generateHibernateRegularColumns>
+		<#list table.columns as column>
+		<#if !column.pk && !column.fk>
+		<property name="${column.columnNameLower}" type="${column.javaType}">
+            <column name="${column.sqlName}" length="${column.size?c}" not-null="${(column.notNull)?string}" unique="${column.unique?string}"/>
+        </property>
+        
+		</#if>
+		</#list>
+</#macro>
+
+<#macro generateHibernateOneToMany>
+		<#if table.associatedTables?exists>
+		<#list table.associatedTables?values as foreignKey>
+			<#assign fkTable    = foreignKey.sqlTableName>
+			<#assign fkPojoClass = foreignKey.classTableName>
+			<#assign fkPojoClassVar = fkPojoClass?uncap_first>
+			<#if foreignKey.relation == "OneToMany">
+		<set name="${fkPojoClassVar}s" lazy="true" inverse="true" cascade="none" >
+			<key column="${foreignKey.sqlColumnName}" />
+			<one-to-many class="${basepackage}.entity.${fkPojoClass}"/>
+		</set> 
+			</#if>
+		</#list>
+		</#if>
+</#macro>
+
+<#macro generateHibernateManyToOne>
+		<#list table.associatedTables?values as foreignKey>
+			<#assign fkTable    = foreignKey.sqlTableName>
+			<#assign fkPojoClass = foreignKey.classTableName>
+			<#assign fkPojoClassVar = fkPojoClass?uncap_first>
+			<#if foreignKey.relation == "ManyToOne">
+				<#if foreignKey.parentName??>
+					<#assign fkFieldName = foreignKey.parentName>
+				<#else>
+					<#assign fkFieldName = fkPojoClass>
+				</#if>
+		<many-to-one name="${fkFieldName?uncap_first}" not-null="false" update="true" insert="true" cascade="none" >	
+     		<column name="${foreignKey.parentSqlColumn}"/>
+		</many-to-one> 
+			</#if>
+		</#list>
+</#macro>
+<#macro generateHibernateManyToMany>
+		<#list table.associatedTables?values as foreignKey>
+			<#assign fkTable    = foreignKey.sqlTableName>
+			<#assign fkPojoClass = foreignKey.classTableName>
+			<#assign fkPojoClassVar = fkPojoClass?uncap_first>
+			<#if foreignKey.relation == "ManyToMany">
+				<#if foreignKey.parentName??>
+					<#assign fkFieldName = foreignKey.parentName>
+				<#else>
+					<#assign fkFieldName = fkPojoClass +"s">
+				</#if>
+				<#assign inverse = "true">
+				<#if foreignKey.mainFk?? && foreignKey.mainFk=="1">
+					<#assign inverse = "false">
+				</#if>
+		<set name="${fkFieldName?uncap_first}" table="${foreignKey.relTableName}"  cascade="none" inverse="${inverse}">  
+            <key column="${foreignKey.parentSqlColumn}"/>
+            <many-to-many class="${basepackage}.entity.${fkPojoClass}" column="${foreignKey.sqlColumnName}"/>  
+        </set>  
+			</#if>
+		
+		</#list>
+</#macro>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.1.7//EN"
+	"http://struts.apache.org/dtds/struts-2.1.7.dtd">
+<struts>
+  <package name="generatorMethodParam" namespace="/" extends="struts-default">
+  	<action name="generatorMethodParam!*" class="com.bonc.quickframework.web.action.GeneratorMethodParamAction" method="{1}">
+  		<result name="list">/WEB-INF/pages/GeneratorMethodParam/list.jsp</result>
+  		<result name="add">/WEB-INF/pages/GeneratorMethodParam/edit.jsp</result>
+  		<result name="edit">/WEB-INF/pages/GeneratorMethodParam/edit.jsp</result>
+  		<result name="success" type="redirectAction">
+  			<param name="actionName">generatorMethodParam!list</param>
+	　　		<param name="bean.generatorMethodParam.methodId">${bean.generatorMethodParam.methodId}</param>
+  		</result>
+  	</action>
+  </package>
+</struts>	

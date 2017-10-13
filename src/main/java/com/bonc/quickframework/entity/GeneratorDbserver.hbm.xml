@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.bonc.quickframework.entity.GeneratorDbserver" table="generator_dbserver">
+
+        <id name="id" column="ID" type="java.lang.Long">
+            <generator class="native"/>
+        </id>
+		
+		<property name="code" type="java.lang.String">
+            <column name="CODE" length="64" not-null="true" unique="false"/>
+        </property>
+        
+		<property name="name" type="java.lang.String">
+            <column name="NAME" length="64" not-null="false" unique="false"/>
+        </property>
+
+		<property name="dbType" type="java.lang.String">
+            <column name="DB_TYPE" length="64" not-null="false" unique="false"/>
+        </property>
+        
+		<property name="jdbcUrl" type="java.lang.String">
+            <column name="JDBC_URL" length="128" not-null="true" unique="false"/>
+        </property>
+        
+		<property name="username" type="java.lang.String">
+            <column name="USERNAME" length="64" not-null="true" unique="false"/>
+        </property>
+        
+		<property name="password" type="java.lang.String">
+            <column name="PASSWORD" length="64" not-null="true" unique="false"/>
+        </property>
+        
+		<property name="dialect" type="java.lang.String">
+            <column name="DIALECT" length="64" not-null="false" unique="false"/>
+        </property>
+        
+		<property name="driverClass" type="java.lang.String">
+            <column name="DRIVER_CLASS" length="64" not-null="false" unique="false"/>
+        </property>
+        
+		<!-- One-To-Many attributes -->
+		
+		<set name="generatorProjects" lazy="true" inverse="true" cascade="none" >
+			<key>
+	       		<column name="DBserver_ID"/>
+	        </key>
+			<one-to-many class="com.bonc.quickframework.entity.GeneratorProject"/>
+		</set> 
+		<!-- Many-To-One attributes -->
+
+    </class>
+</hibernate-mapping>
+

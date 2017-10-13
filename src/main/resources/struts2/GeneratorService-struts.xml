@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.1.7//EN"
+	"http://struts.apache.org/dtds/struts-2.1.7.dtd">
+<struts>
+  <package name="generatorService" namespace="/" extends="struts-default">
+  	<action name="generatorService!*" class="com.bonc.quickframework.web.action.GeneratorServiceAction" method="{1}">
+  		<result name="list">/WEB-INF/pages/GeneratorService/list.jsp</result>
+  		<result name="add">/WEB-INF/pages/GeneratorService/edit.jsp</result>
+  		<result name="edit">/WEB-INF/pages/GeneratorService/edit.jsp</result>
+  		<result name="success" type="redirectAction">
+  			<param name="actionName">generatorService!list</param>
+	　　		<param name="bean.generatorEntity.projectId">${bean.generatorEntity.projectId}</param>
+  		</result>
+  	</action>
+  </package>
+</struts>	

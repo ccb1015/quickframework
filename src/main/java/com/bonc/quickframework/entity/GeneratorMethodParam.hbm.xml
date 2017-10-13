@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.bonc.quickframework.entity.GeneratorMethodParam" table="generator_method_param">
+
+        <id name="id" column="Id" type="java.lang.Long">
+            <generator class="native"/>
+        </id>
+		
+		<property name="code" type="java.lang.String">
+            <column name="code" length="255" not-null="false" unique="false"/>
+        </property>
+        
+		<property name="name" type="java.lang.String">
+            <column name="name" length="255" not-null="false" unique="false"/>
+        </property>
+        
+		<property name="description" type="java.lang.String">
+            <column name="description" length="255" not-null="false" unique="false"/>
+        </property>
+        
+		<property name="paramMapType" type="java.lang.String">
+            <column name="param_map_type" length="255" not-null="false" unique="false"/>
+        </property>
+        
+		<property name="paramMapValue" type="java.lang.String">
+            <column name="param_map_value" length="255" not-null="false" unique="false"/>
+        </property>
+        
+		<property name="dataType" type="java.lang.String">
+            <column name="data_type" length="255" not-null="false" unique="false"/>
+        </property>
+        
+		<property name="methodId" type="java.lang.Long">
+            <column name="method_id" length="19" not-null="false" unique="false"/>
+        </property>
+        
+		<!-- One-To-Many attributes -->
+		<!-- Many-To-One attributes -->
+		
+		<many-to-one name="generatorServiceMethod" not-null="false" update="false" insert="false" cascade="none" >	
+       		<column name="method_id"/>
+		</many-to-one> 
+
+    </class>
+</hibernate-mapping>
+
